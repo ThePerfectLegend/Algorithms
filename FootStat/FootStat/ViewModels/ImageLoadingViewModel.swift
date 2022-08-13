@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class ImageLoadingPresentor: ObservableObject {
+class ImageLoadingViewModel: ObservableObject {
     
     @Published var image: UIImage?
     @Published var isLoading = false

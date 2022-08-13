@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LeagueRowView: View {
     
-    let league: LeagueModel.League
+    let league: League
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {

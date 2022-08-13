@@ -9,10 +9,10 @@ import SwiftUI
 
 struct DownloadingImageView: View {
     
-    @StateObject var loader: ImageLoadingPresentor
+    @StateObject var loader: ImageLoadingViewModel
     
     init(url: String) {
-        _loader = StateObject(wrappedValue: ImageLoadingPresentor(url: url))
+        _loader = StateObject(wrappedValue: ImageLoadingViewModel(url: url))
     }
     
     var body: some View {

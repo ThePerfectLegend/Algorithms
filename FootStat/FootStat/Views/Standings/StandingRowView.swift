@@ -2,15 +2,17 @@
 //  StandingRowView.swift
 //  FootStat
 //
-//  Created by Nizami Tagiyev on 04.08.2022.
+//  Created by Nizami Tagiyev on 10.08.2022.
 //
 
 import SwiftUI
 
 struct StandingRowView: View {
     
-    let standing: StandingModel.SeasonData.Standing
+    let standing: Standing
     private let statDataKeys = ["gamesPlayed", "wins", "ties", "losses", "points"]
+    private let placeholderColors: [Color] = [.red, .green, .yellow, .blue, .cyan, .purple, .indigo, .mint]
+
     
     var body: some View {
         VStack {
@@ -51,8 +53,9 @@ extension StandingRowView {
         if let unwrappedLogoArray = standing.team.logos {
             DownloadingImageView(url: unwrappedLogoArray[0].href)
         } else {
-            Image(systemName: "questionmark.circle")
+            Image(systemName: "questionmark.circle.fill")
                 .resizable()
+                .foregroundColor(placeholderColors.randomElement())
         }
     }
     
@@ -66,7 +69,7 @@ extension StandingRowView {
     
     func findData(for serching: String) -> String {
         let value = standing.stats.first { stat in
-            stat.name == serching
+            stat.name.rawValue == serching
         }
         if let unwrappedValue = value {
             return unwrappedValue.displayValue
@@ -75,3 +78,4 @@ extension StandingRowView {
         }
     }
 }
+
